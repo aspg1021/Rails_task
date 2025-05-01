@@ -1,0 +1,40 @@
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<div class = "pagetitle align-items-center">
+  <h2>予定一覧</h2>
+  <%= link_to '新規追加', new_schedule_path, class: 'btn btn-primary text-white btn-title' %>
+</div>
+
+<table class = "border table shadow align-middle">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.id %></td>
+        <td><%= schedule.title %></td>
+        <td><%= schedule.start_date %></td>
+        <td><%= schedule.end_date %></td>
+        <td><%= schedule.all_day ? '〇' : '' %></td>
+        <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to '詳細', schedule, class: 'btn' %></td>
+        <td><%= link_to '編集', edit_schedule_path(schedule), class: 'btn' %></td>
+        <td><%= link_to '削除', schedule, method: :delete, data: { confirm: '予定を削除しますか？' }, class: 'btn' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
