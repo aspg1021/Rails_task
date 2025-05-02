@@ -1,29 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @schedule.title %>
-</p>
+<div class = "container px-5">
+  <%= link_to '← 一覧に戻る', schedules_path, class: "text-primary text-decoration-none bg-transparent d-flex mb-4" %>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @schedule.start_date %>
-</p>
+  <div class = "title-container align-items-center">
+    <p class = "fs-4 m-0">
+      <%= @schedule.title %>
+    </p>
+    <%= link_to '編集', edit_schedule_path(@schedule), class: "btn btn-white text-primary border-primary" %>
+  </div>
 
-<p>
-  <strong>End date:</strong>
-  <%= @schedule.end_date %>
-</p>
+  <div class = "border shadow-sm p-4 bg-white">
+    <table class = "border table align-middle m-0">
+      <tr class>
+        <th class = "bg-light w-25 p-4">開始日</th>
+        <td><%= @schedule.start_date.to_s(:date_jp) %></td>
+      </tr>
 
-<p>
-  <strong>All day:</strong>
-  <%= @schedule.all_day %>
-</p>
+      <tr>
+        <th class = "bg-light w-25 p-4">終了日</th>
+        <td><%= @schedule.end_date.to_s(:date_jp) %></td>
+      </tr>
 
-<p>
-  <strong>Memo:</strong>
-  <%= @schedule.memo %>
-</p>
+      <tr>
+        <th class = "bg-light w-25 p-4">終日</th>
+        <td><%= @schedule.all_day ? '〇' : '' %></td>
+      </tr>
 
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
+      <tr>
+        <th class = "bg-light w-25 p-4">スケジュールメモ</th>
+        <td><%= @schedule.memo %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
