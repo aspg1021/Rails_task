@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class = "container px-5">
+  <%= link_to '← 一覧に戻る', schedules_path, class: "text-primary text-decoration-none bg-transparent d-flex mb-4" %>
+
+  <div class = "title-container align-items-center">
+    <p class = "fs-4 m-0">
+      <%= @schedule.title %>
+    </p>
+    <%= link_to '編集', edit_schedule_path(@schedule), class: "btn btn-white text-primary border-primary" %>
+  </div>
+
+  <div class = "border shadow-sm p-4 bg-white">
+    <table class = "border table align-middle m-0">
+      <tr class>
+        <th class = "bg-light w-25 p-4">開始日</th>
+        <td><%= @schedule.start_date.to_s(:date_jp) %></td>
+      </tr>
+
+      <tr>
+        <th class = "bg-light w-25 p-4">終了日</th>
+        <td><%= @schedule.end_date.to_s(:date_jp) %></td>
+      </tr>
+
+      <tr>
+        <th class = "bg-light w-25 p-4">終日</th>
+        <td><%= @schedule.all_day ? '〇' : '' %></td>
+      </tr>
+
+      <tr>
+        <th class = "bg-light w-25 p-4">スケジュールメモ</th>
+        <td><%= @schedule.memo %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+
+
